@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 :root {
   --blob-1-clr: linear-gradient(#ff00d0, #8626b2);
   --blob-2-clr: linear-gradient(#05276b, #00eeff);
@@ -6,8 +13,14 @@
 body {
   background-color: #111;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .App {
@@ -25,6 +38,7 @@ body {
 
   width: 20vw;
   aspect-ratio: 1/1;
+  -webkit-animation: move-down 1.5s linear infinite alternate;
   animation: move-down 1.5s linear infinite alternate;
 }
 .blob-2 {
@@ -33,6 +47,7 @@ body {
   aspect-ratio: 1/1;
   bottom: 0%;
   right: -10%;
+  -webkit-animation: move-up 1.5s linear infinite alternate;
   animation: move-up 1.5s linear infinite alternate;
 }
 .blob-3 {
@@ -41,21 +56,43 @@ body {
   aspect-ratio: 1/1;
   bottom: 50%;
   right: 50%;
+  -webkit-animation: rotate 1.5s linear infinite alternate;
   animation: rotate 1.5s linear infinite alternate;
   display: none;
 }
+@-webkit-keyframes move-up {
+  0% {
+    -webkit-transform: translateY(-2vw);
+    transform: translateY(-2vw);
+  }
+}
 @keyframes move-up {
   0% {
+    -webkit-transform: translateY(-2vw);
     transform: translateY(-2vw);
+  }
+}
+@-webkit-keyframes move-down {
+  0% {
+    -webkit-transform: translateY(2vw);
+    transform: translateY(2vw);
   }
 }
 @keyframes move-down {
   0% {
+    -webkit-transform: translateY(2vw);
     transform: translateY(2vw);
+  }
+}
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: translate(100vw, 100vw);
+    transform: translate(100vw, 100vw);
   }
 }
 @keyframes rotate {
   0% {
+    -webkit-transform: translate(100vw, 100vw);
     transform: translate(100vw, 100vw);
   }
 }
@@ -65,15 +102,25 @@ body {
   /* box-shadow: 0 0 5vw 0 #00eeff; */
   border: 0.2vw solid rgba(255, 255, 255, 0.5);
   width: 40vw;
+  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
 
+  display: -webkit-box;
+
+  display: -ms-flexbox;
+
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   position: relative;
 }
 .clock img {
   width: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 
@@ -86,6 +133,8 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   z-index: 4;
 }
@@ -95,12 +144,16 @@ body {
 .sec {
   position: absolute;
   left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 .hr {
   width: 0.5vw;
   height: 20%;
   z-index: 2;
+  -webkit-transform: translate(-50%) rotate(180deg);
+  -ms-transform: translate(-50%) rotate(180deg);
   transform: translate(-50%) rotate(180deg);
 }
 .hr::before {
@@ -116,6 +169,8 @@ body {
   width: 0.3vw;
   height: 30%;
   z-index: 1;
+  -webkit-transform: translate(-50%) rotate(45deg);
+  -ms-transform: translate(-50%) rotate(45deg);
   transform: translate(-50%) rotate(45deg);
 }
 .min::before {
@@ -130,6 +185,8 @@ body {
 .sec {
   width: 0.2vw;
   height: 45%;
+  -webkit-transform: translate(-50%);
+  -ms-transform: translate(-50%);
   transform: translate(-50%);
 }
 .sec::before {
